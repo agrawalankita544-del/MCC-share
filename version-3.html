@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Version 3 · Commission link in its own sheet · MCC share from PDP</title>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#9F2089}a:hover{color:#9F2089}
+button{font-family:inherit;cursor:pointer}
+button:disabled{cursor:default}
+button:focus-visible{outline:2px solid #5585F8;outline-offset:2px}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes drift{from{opacity:0;transform:translateY(-24px) rotate(0deg)}to{opacity:1;transform:translateY(0) rotate(var(--r))}}
+@keyframes pop{0%{transform:scale(.6) rotate(-10deg);opacity:0}70%{transform:scale(1.15) rotate(6deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+.fade{animation:fade .25s ease}
+.rise{animation:rise .25s ease}
+.up{animation:up .34s cubic-bezier(.2,.8,.2,1)}
+.pop{animation:pop .6s .25s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion: reduce){.fade,.rise,.up,.pop{animation:none}}
+</style>
+<style>
+html,body{margin:0;background:#EAEAF2}
+#stage{display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
+#fit{transform-origin:top center}
+</style>
+<script src="assets/preact.umd.js"></script>
+<script src="assets/runtime.js"></script>
+</head>
+<body>
+<div id="stage"><div id="fit"><div id="app"></div></div></div>
+<template id="tpl">
+<div style="width: 820px; height: 840px; box-sizing: border-box; padding: 40px; display: flex; gap: 40px; align-items: flex-start; background: #EAEAF2; font-family: Inter, system-ui, sans-serif; color: #353543">
+
+<!-- ===== FLOW STEPS ===== -->
+<div style="width: 340px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px; background: #FFFFFF; border-radius: 16px; padding: 20px; box-sizing: border-box; border: 1px solid #CECEDE">
+  <div style="display: flex; flex-direction: column; gap: 4px">
+    <div style="font-size: 12px; font-weight: 600; color: #9F2089">From Figma · Version 3 (219:123701)</div>
+    <div style="font-size: 18px; font-weight: 700; line-height: 1.3">Version 3 · commission link in its own sheet</div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <sc-for list="{{steps}}" as="st" hint-placeholder-count="5">
+      <button onClick="{{st.go}}" aria-current="{{st.current}}" style="{{st.style}}">
+        <span style="{{st.badge}}">{{st.num}}</span>
+        <span style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 13px; font-weight: 700">{{st.title}}</span>
+          <span style="font-size: 12px; line-height: 1.4; color: #616173">{{st.sub}}</span>
+        </span>
+      </button>
+    </sc-for>
+  </div>
+  <button onClick="{{reset}}" style="height: 40px; border-radius: 10px; border: 1px solid #CECEDE; background: #FFFFFF; color: #353543; font-size: 13px; font-weight: 600">Start over</button>
+  <div style="font-size: 12px; line-height: 1.5; color: #616173; background: #F8F8FF; border-radius: 10px; padding: 10px 12px"><strong style="color: #353543">Stand-ins:</strong> the Congratulations illustration, confetti and product photo are drawn here instead of exported, and Mier B02 shows as Mulish. Everything else matches the frames.</div>
+</div>
+
+<!-- ===== DEVICE 360 × 720 ===== -->
+<div style="flex-shrink: 0; padding: 10px; background: #1C1820; border-radius: 34px">
+<div style="position: relative; width: 360px; height: 720px; overflow: hidden; background: #FFFFFF; border-radius: 24px; font-family: Mulish, system-ui, sans-serif; color: #353543">
+
+  <!-- ===== 1 · PRODUCT PAGE ===== -->
+  <div style="position: absolute; inset: 0; background: #FFFFFF">
+    <div style="height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px 0 26px; font-family: Inter, sans-serif; font-size: 15px; font-weight: 600">
+      <span>{{clock}}</span>
+      <span style="display: flex; gap: 5px; align-items: center"><span style="width: 16px; height: 10px; border-radius: 2px; background: #353543; opacity: .85"></span><span style="width: 22px; height: 11px; border-radius: 3px; border: 1.5px solid #353543; box-sizing: border-box"></span></span>
+    </div>
+    <div style="height: 40px; display: flex; align-items: center; padding: 0 12px; gap: 14px">
+      <button onClick="{{other}}" aria-label="Back" style="width: 32px; height: 32px; border: none; background: none; padding: 0; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#353543" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+      <span style="flex: 1"></span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#353543" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#353543" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#353543" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2L20 7H6.2"></path><circle cx="9" cy="20" r="1.3"></circle><circle cx="17" cy="20" r="1.3"></circle></svg>
+    </div>
+    <div style="height: 30px; margin: 0 0 0; padding: 0 12px; display: flex; align-items: center; background: linear-gradient(90deg, #FDE2FA 0%, #FFFFFF 100%)">
+      <span style="display: inline-flex; align-items: center; gap: 4px; background: #C90179; color: #FFFFFF; font-size: 12px; font-weight: 700; padding: 2px 8px 2px 6px; border-radius: 3px 0 0 3px">
+        <img src="assets/flame-badge.svg" alt="" width="14" height="14" style="display: block">Affiliate</span>
+      <span style="font-size: 12px; color: #353543; padding-left: 8px">9.6% Commission</span>
+    </div>
+    <div style="position: relative; height: 270px; display: flex; align-items: center; justify-content: center; background: #FFFFFF">
+      <img src="assets/product-thumb.png" alt="Dream Stardust eyeshadow and highlighter palette" style="width: 210px; height: 233px; object-fit: contain">
+      <span style="position: absolute; left: 12px; bottom: 8px; font-size: 10px; color: #8B8BA3">s-634395772</span>
+      <span style="position: absolute; right: 12px; bottom: 6px; font-size: 11px; color: #353543; background: #FFFFFF; border: 1px solid #EAEAF2; border-radius: 12px; padding: 3px 8px">More Like This</span>
+    </div>
+    <div style="padding: 10px 12px 0; display: flex; gap: 10px">
+      <span style="flex: 1; font-size: 13px; line-height: 17px; color: #616173">Dream Stardust Eyeshadow &amp; Highlighter Palette – Shade 01 &amp; 02</span>
+      <button onClick="{{other}}" style="border: none; background: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 11px; color: #353543; width: 44px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#353543" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg>Wishlist</button>
+      <button onClick="{{openShare}}" style="border: none; background: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 11px; color: #353543; width: 44px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#353543" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="18" cy="5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="19" r="2.5"></circle><path d="M8.2 10.9l7.6-4.4M8.2 13.1l7.6 4.4"></path></svg>Share</button>
+    </div>
+    <div style="padding: 6px 12px 0; display: flex; align-items: baseline; gap: 6px"><span style="font-size: 22px; font-weight: 800">₹232</span><span style="font-size: 12px; color: #8B8BA3; text-decoration: line-through">259</span><span style="font-size: 12px; color: #038D63; font-weight: 700">10% off</span></div>
+    <div style="margin: 8px 12px 0; display: inline-flex; align-items: center; gap: 6px; background: #F8F8FF; border-radius: 4px; padding: 4px 8px; font-size: 12px; color: #353543"><strong>UPI Offer</strong> applied for you!</div>
+    <div style="padding: 8px 12px 0; font-size: 12px; color: #616173">₹259 with COD</div>
+    <div style="padding: 8px 12px 0; display: flex; align-items: center; gap: 6px; font-size: 11px; color: #616173"><span style="background: #038D63; color: #FFFFFF; font-weight: 700; padding: 1px 6px; border-radius: 8px">5 ★</span>(4) Ratings</div>
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 12px 18px; background: #FFFFFF; border-top: 1px solid #EAEAF2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+      <button onClick="{{other}}" style="height: 40px; border-radius: 4px; border: 1px solid #9F2089; background: #FFFFFF; color: #9F2089; font-size: 13px; font-weight: 700">Add to Cart</button>
+      <button onClick="{{other}}" style="height: 40px; border-radius: 4px; border: none; background: #9F2089; color: #FFFFFF; font-size: 13px; font-weight: 700">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- scrim (80% Grey/Base, as in the frames) -->
+  <sc-if value="{{showScrim}}" hint-placeholder-val="{{ true }}">
+    <div class="fade" style="position: absolute; inset: 0; background: rgba(53,53,67,0.8)">
+      <button onClick="{{scrimTap}}" aria-label="Close" style="position: absolute; inset: 0; width: 100%; height: 100%; border: none; background: transparent"></button>
+    </div>
+  </sc-if>
+
+  <!-- ===== 2–3 · SHARE SHEET ===== -->
+  <sc-if value="{{isShare}}" hint-placeholder-val="{{ true }}">
+  <div class="up" style="{{sheetStyle}}">
+    <div aria-hidden="true" style="position: absolute; left: 0; top: 104px; width: 360px; height: 223px; overflow: hidden; pointer-events: none; z-index: 3; opacity: 0.4">
+      <sc-if value="{{isB}}" hint-placeholder-val="{{ false }}">
+        <sc-for list="{{confetti}}" as="c" hint-placeholder-count="0"><span style="{{c}}"></span></sc-for>
+      </sc-if>
+    </div>
+    <div style="{{hdrStyle}}">
+      <div style="position: absolute; left: 16px; right: 16px; top: 16px; display: flex; gap: 16px; align-items: flex-start">
+        <div style="{{hdrTitle}}">
+          <span style="font-weight: 600; color: #353543; letter-spacing: 0.065px; text-transform: uppercase">Share</span>
+          <span style="color: #616173; letter-spacing: 0.0195px">Charvi Attractive Sarees</span>
+        </div>
+        <button onClick="{{closeAll}}" aria-label="Close" style="width: 24px; height: 24px; padding: 0; border: none; background: none"><img src="assets/close.svg" alt="" width="24" height="24" style="display: block"></button>
+      </div>
+      <div style="{{hdrDiv}}"></div>
+    </div>
+    <div aria-hidden="{{resellerHidden}}" style="{{resellerStyle}}">
+      <span style="flex: 1; font-size: 13px; line-height: 16px; font-weight: 600">Are you reselling this product?</span>
+      <div style="display: flex; gap: 8px">
+        <button onClick="{{noop}}" disabled="{{isB}}" aria-pressed="true" style="padding: 4px 12px; border-radius: 16px; border: 1px solid #D9A6D0; background: #FFE7FB; color: #9F2089; font-size: 13px; line-height: 16px">NO</button>
+        <button onClick="{{other}}" disabled="{{isB}}" aria-pressed="false" style="padding: 4px 12px; border-radius: 16px; border: 1px solid #EAEAF2; background: #F8F8FF; color: #666666; font-size: 13px; line-height: 16px">YES</button>
+      </div>
+    </div>
+    <div style="{{divReseller}}"></div>
+    <button onClick="{{goBack}}" disabled="{{isA}}" aria-hidden="{{backHidden}}" style="{{backStyle}}"><span aria-hidden="true">←</span> GO BACK</button>
+
+    <div style="{{cardStyle}}">
+      <div aria-hidden="true" style="{{cardBgA}}"></div>
+      <div aria-hidden="true" style="{{cardBgB}}"></div>
+      <img src="assets/new-tag.svg" alt="New" width="34" height="31" style="position: absolute; left: 0; top: 4px; display: block; z-index: 2">
+      <div aria-hidden="{{cardAHidden}}" style="{{cardA}}">
+        <span style="position: absolute; left: 0; right: 0; top: 34px; text-align: center; font-size: 21px; line-height: 24px; font-weight: 700; color: #353543">Share as a creator</span>
+        <span style="position: absolute; left: 0; right: 0; top: 65px; display: flex; justify-content: center; align-items: center; gap: 4px">
+          <span style="display: inline-flex; align-items: center; gap: 2px; padding: 1px 4px; border-radius: 4px; background: linear-gradient(90deg, #FEE7F5 0%, rgba(255,255,255,0) 132.55%)">
+            <img src="assets/flame-small.svg" alt="" width="12" height="12" style="display: block">
+            <span style="font-size: 11px; line-height: 16px; color: #C90179; letter-spacing: 0.132px; white-space: nowrap">9.8% Commission</span>
+          </span>
+          <span style="font-size: 13px; line-height: 16px; color: #616173; letter-spacing: 0.0325px; white-space: nowrap">on eligible orders</span>
+        </span>
+        <button onClick="{{getLink}}" disabled="{{isB}}" style="position: absolute; left: 101px; top: 100px; padding: 8px 12px; border-radius: 4px; border: 1px solid #9F2089; background: transparent; color: #9F2089; font-size: 15px; line-height: 20px; font-weight: 600; letter-spacing: 0.0225px; white-space: nowrap">Get commission link</button>
+        <span style="position: absolute; left: 16px; right: 16px; top: 167px; height: 20px; display: flex; align-items: center; gap: 10px">
+          <span style="flex: 1; height: 1px; background: #CECEDE"></span>
+          <span style="font-size: 13px; line-height: 20px; color: #353543; letter-spacing: 2.08px">OR</span>
+          <span style="flex: 1; height: 1px; background: #CECEDE"></span>
+        </span>
+      </div>
+      <div aria-hidden="{{cardBHidden}}" style="{{cardB}}">
+        <div style="display: flex; flex-direction: column; gap: 4px; align-items: center; text-align: center; width: 100%">
+          <span style="font-size: 21px; line-height: 24px; font-weight: 700">Commission link created!</span>
+          <span style="font-size: 13px; line-height: 16px; color: #616173; letter-spacing: 0.0325px">Share on your socials &amp; earn on eligible orders</span>
+        </div>
+        <button onClick="{{copyLink}}" disabled="{{isA}}" aria-label="Copy commission link" style="width: 100%; display: flex; align-items: center; gap: 8px; padding: 12px; border-radius: 8px; border: 1px dashed #8B8BA3; background: #FFFFFF; text-align: left">
+          <span style="display: inline-flex; align-items: center; gap: 2px; padding: 4px; border-radius: 4px; background: #C90179; flex-shrink: 0">
+            <img src="assets/flame-badge.svg" alt="" width="14" height="14" style="display: block">
+            <span style="font-size: 14px; line-height: 12px; font-weight: 600; color: #FFFFFF">9.8%</span>
+          </span>
+          <span style="flex: 1; min-width: 0; font-size: 13px; line-height: 16px; color: #616173; text-decoration: underline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{linkText}}</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="{{shareOnStyle}}">
+      <div style="position: relative; height: 16px">
+        <span style="{{titleA}}">Choose social media to share</span>
+        <span style="{{titleB}}">Choose social media to share</span>
+      </div>
+      <sc-for list="{{items}}" as="it" hint-placeholder-count="7">
+        <button onClick="{{it.go}}" aria-label="{{it.aria}}" style="{{it.style}}">
+          <img src="{{it.icon}}" alt="" width="32" height="32" style="display: block">
+          <span style="{{it.labelStyle}}">{{it.label}}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="{{divDownloadTop}}"></div>
+    <button onClick="{{download}}" style="{{downloadStyle}}">
+      <img src="assets/download.svg" alt="" width="24" height="24" style="display: block">
+      <span style="font-size: 13px; line-height: 16px">Download Photos</span>
+    </button>
+    <div style="{{divDownloadBottom}}"></div>
+  </div>
+  </sc-if>
+
+  <!-- ===== 3 · COMMISSION LINK CREATED (own sheet) ===== -->
+  <sc-if value="{{isCreated3}}" hint-placeholder-val="{{ false }}">
+  <div class="up" style="position: absolute; left: 0; right: 0; bottom: 0; height: 277px; background: #FFFFFF; border-radius: 12px 12px 0 0; overflow: hidden; z-index: 5">
+    <div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 360px; height: 248px; opacity: 0.4; overflow: hidden; pointer-events: none">
+      <sc-for list="{{confetti}}" as="c" hint-placeholder-count="0"><span style="{{c}}"></span></sc-for>
+    </div>
+    <button onClick="{{backToShare}}" aria-label="Back to share options" style="position: absolute; left: 15px; top: 16px; width: 24px; height: 24px; padding: 0; border: none; background: none; z-index: 2"><img src="assets/back.svg" alt="" width="24" height="24" style="display: block"></button>
+    <button onClick="{{closeAll}}" aria-label="Close" style="position: absolute; right: 16px; top: 16px; width: 24px; height: 24px; padding: 0; border: none; background: none; z-index: 2"><img src="assets/close.svg" alt="" width="24" height="24" style="display: block"></button>
+    <div style="position: absolute; left: 31px; top: 52px; width: 302px; display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 1">
+      <span style="font-size: 21px; line-height: 24px; font-weight: 700; color: #353543; text-align: center">Commission link created!</span>
+      <span style="display: flex; align-items: center; gap: 4px">
+        <span style="display: inline-flex; align-items: center; gap: 2px; padding: 1px 4px; border-radius: 4px; background: linear-gradient(90deg, #FEE7F5 0%, rgba(255,255,255,0) 132.55%)">
+          <img src="assets/flame-small.svg" alt="" width="12" height="12" style="display: block">
+          <span style="font-size: 11px; line-height: 16px; color: #C90179; letter-spacing: 0.132px; white-space: nowrap">9.8% Commission</span>
+        </span>
+        <span style="font-size: 13px; line-height: 16px; color: #616173; letter-spacing: 0.0325px; white-space: nowrap">on eligible orders</span>
+      </span>
+    </div>
+    <div style="position: absolute; left: 31px; top: 127px; width: 302px; box-sizing: border-box; padding: 8px; border-radius: 8px; border: 1px dashed #8B8BA3; background: #FFFFFF; display: flex; align-items: center; justify-content: space-between; z-index: 1">
+      <span style="display: flex; align-items: center; gap: 12px; min-width: 0">
+        <span style="width: 28px; height: 28px; border-radius: 8px 8px 0 0; background: #F9F6F1; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><img src="assets/product-thumb.png" alt="" width="26" height="28" style="display: block; object-fit: cover"></span>
+        <span style="font-size: 13px; line-height: 16px; color: #616173; letter-spacing: 0.0325px; text-decoration: underline; white-space: nowrap">{{linkText3}}</span>
+      </span>
+      <button onClick="{{copyLink}}" style="padding: 6px 8px; border-radius: 4px; border: none; background: #FFE7FB; color: #9F2089; font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: 0.065px">{{copyLabel3}}</button>
+    </div>
+    <button onClick="{{shareComm3}}" style="position: absolute; left: 31px; top: 193px; width: 302px; padding: 6px 8px; border-radius: 4px; border: none; background: #9F2089; color: #FFFFFF; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: 0.065px; z-index: 1">
+      <img src="assets/share-white.svg" alt="" width="24" height="24" style="display: block">
+      SHARE COMMISSION LINK
+    </button>
+  </div>
+  </sc-if>
+
+  <!-- ===== 4 · iOS SHARE SHEET ===== -->
+  <sc-if value="{{isOs}}" hint-placeholder-val="{{ false }}">
+  <div class="up" style="position: absolute; left: 0; right: 0; bottom: 0; height: 420px; background: #F2F2F7; border-radius: 12px 12px 0 0; font-family: Inter, -apple-system, system-ui, sans-serif; color: #000000; z-index: 5">
+    <div style="height: 54px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.6); border-radius: 12px 12px 0 0; border-bottom: 1px solid #DCDCE0">
+      <span style="width: 34px; height: 34px; border-radius: 8px; background: #6E1C66; color: #FFFFFF; font-family: Mulish, sans-serif; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center">m</span>
+      <button onClick="{{osClose}}" aria-label="Close share sheet" style="width: 30px; height: 30px; border-radius: 15px; border: none; background: #E3E3E8; color: #6B6B70; display: flex; align-items: center; justify-content: center; padding: 0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+    </div>
+    <div style="display: flex; gap: 14px; padding: 14px 14px 10px; overflow: hidden">
+      <sc-for list="{{osApps}}" as="a" hint-placeholder-count="4">
+        <button onClick="{{a.go}}" aria-label="{{a.name}}" style="border: none; background: none; padding: 0; width: 70px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; color: #000000">
+          <img src="{{a.src}}" alt="" width="40" height="40" style="display: block; margin: 9px 0">
+          <span style="font-size: 11px; line-height: 13px; text-align: center">{{a.name}}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="margin: 4px 14px 0; display: flex; flex-direction: column; gap: 10px">
+      <button onClick="{{osCopy}}" style="height: 46px; border-radius: 10px; border: none; background: #FFFFFF; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; font-size: 15px; color: #000000">Copy <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"></rect><path d="M15 8V5a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h2"></path></svg></button>
+      <div style="border-radius: 10px; background: #FFFFFF; overflow: hidden">
+        <sc-for list="{{osRows}}" as="r" hint-placeholder-count="4">
+          <button onClick="{{r.go}}" style="width: 100%; height: 44px; border: none; border-bottom: 1px solid #ECECF0; background: #FFFFFF; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; font-size: 15px; color: #000000; text-align: left">{{r.name}}<span style="font-size: 14px; font-weight: 700; color: #000000">{{r.glyph}}</span></button>
+        </sc-for>
+      </div>
+      <span style="padding: 2px 4px; font-size: 15px; color: #0A7AFF">Edit Actions…</span>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===== 5 · BACK IN MEESHO: CONGRATULATIONS ===== -->
+  <sc-if value="{{isUnlocked}}" hint-placeholder-val="{{ false }}">
+  <div class="up" style="position: absolute; left: 0; right: 0; bottom: 0; height: 497px; background: #FFFFFF; border-radius: 8px 8px 0 0; overflow: hidden; z-index: 5">
+    <div style="height: 52px; position: relative">
+      <button onClick="{{closeAll}}" aria-label="Close" style="position: absolute; right: 16px; top: 16px; width: 24px; height: 24px; padding: 0; border: none; background: none; z-index: 3"><img src="assets/close.svg" alt="" width="24" height="24" style="display: block"></button>
+    </div>
+    <div style="position: relative; height: 445px">
+      <div style="position: absolute; left: 50%; margin-left: -162px; top: 13px; width: 325px; height: 338px; box-sizing: border-box; border: 1px solid #E8E8E8; border-radius: 10.556px; overflow: hidden; background: linear-gradient(180deg, #FDE2FA 88.644%, #FFFFFF 100%)">
+        <p style="position: absolute; left: 0; right: 0; top: 32px; margin: 0; text-align: center; font-size: 13px; line-height: 20px; letter-spacing: 2.08px; color: #353543">CONGRATULATIONS</p>
+        <p style="position: absolute; left: 23px; width: 279px; top: 71px; margin: 0; text-align: center; font-size: 21px; line-height: 24px; font-weight: 700; color: #353543">1st commission link shared <span class="pop" style="display: inline-block">🎉</span></p>
+        <p style="position: absolute; left: 36px; width: 253px; top: 105px; margin: 0; text-align: center; font-size: 13px; line-height: 16px; color: #616173; letter-spacing: 0.0325px">Get more commission links and track your earnings in Meesho Creator Club.</p>
+        <div aria-hidden="true" style="position: absolute; left: 50%; bottom: -90px; width: 240px; height: 240px; margin-left: -110px; border-radius: 120px; background: #F9CCEE"></div>
+        <div aria-hidden="true" style="position: absolute; left: 50%; bottom: 0; width: 120px; height: 110px; margin-left: -40px; border-radius: 60px 60px 0 0; background: #ADC6FF"></div>
+        <div aria-hidden="true" style="position: absolute; left: 50%; bottom: 96px; width: 56px; height: 56px; margin-left: -10px; border-radius: 28px; background: #F4C9A8"></div>
+        <div aria-hidden="true" style="position: absolute; left: 50%; bottom: 128px; width: 70px; height: 40px; margin-left: -17px; border-radius: 35px 35px 10px 10px; background: #4A2A2A"></div>
+        <div aria-hidden="true" style="position: absolute; left: 58px; bottom: 20px; width: 40px; height: 62px; border-radius: 8px; background: #C9A7F0; transform: rotate(-12deg)"></div>
+        <span aria-hidden="true" style="position: absolute; left: 150px; top: 168px; color: #E590F9; font-size: 14px">✦</span>
+        <span aria-hidden="true" style="position: absolute; left: 196px; top: 186px; color: #F48FB1; font-size: 12px">♥</span>
+      </div>
+      <button onClick="{{tryNow}}" style="position: absolute; left: 16px; top: 378px; width: 328px; box-sizing: border-box; padding: 12px; border-radius: 4px; border: none; background: #9F2089; color: #FFFFFF; font-size: 15px; line-height: 20px; font-weight: 600; letter-spacing: 0.0225px">Open Meesho Creator Club</button>
+    </div>
+    <div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 360px; height: 228px; opacity: 0.4; overflow: hidden; pointer-events: none; z-index: 2">
+      <sc-for list="{{confetti}}" as="c" hint-placeholder-count="0"><span style="{{c}}"></span></sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{isAway}}" hint-placeholder-val="{{ false }}">
+    <div class="fade" style="position: absolute; inset: 0; z-index: 8; background: #1C1820; color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-family: Inter, sans-serif">
+      <span style="font-size: 15px; font-weight: 600">{{awayTitle}}</span>
+      <span style="font-size: 12px; color: #CECEDE">Coming back to Meesho…</span>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{hasToast}}" hint-placeholder-val="{{ false }}">
+    <div class="rise" role="status" style="position: absolute; left: 20px; right: 20px; bottom: 24px; z-index: 30; background: #353543; color: #FFFFFF; border-radius: 8px; padding: 12px 14px; font-size: 13px; line-height: 16px; font-weight: 600">{{toast}}</div>
+  </sc-if>
+</div>
+</div>
+
+</div>
+</template>
+<script type="text/x-dc" id="logic">
+var FF_ICONS = {
+  whatsapp: 'assets/whatsapp.svg',
+  instagram: 'assets/instagram.svg',
+  facebook: 'assets/facebook.svg',
+  copy: 'assets/copy.svg',
+  others: 'assets/others.svg'
+};
+var FF_ITEMS = [
+  { id: 'wa', label: 'WhatsApp', icon: 'whatsapp', color: '#353543' },
+  { id: 'ig', label: 'Instagram', icon: 'instagram', color: '#333333' },
+  { id: 'igs', label: 'Instagram Stories', icon: 'instagram', color: '#333333' },
+  { id: 'fbw', label: 'Facebook Wall', icon: 'facebook', color: '#353543' },
+  { id: 'fbp', label: 'Facebook Page', icon: 'facebook', color: '#353543' },
+  { id: 'copy', label: 'Copy to clipboard', icon: 'copy', color: '#353543' },
+  { id: 'more', label: 'Others', icon: 'others', color: '#353543' }
+];
+var FF_A = ['wa', 'ig', 'igs', 'fbw', 'fbp', 'copy', 'more'];
+var FF_B = ['wa', 'ig', 'igs', 'fbw', 'fbp', 'copy', 'more'];
+var FF_STEPS = [
+  { title: 'Product page', sub: 'Tap Share' },
+  { title: 'Share as a creator', sub: 'New block at the top · tap Get commission link' },
+  { title: 'Commission link created', sub: 'Its own sheet · Share commission link' },
+  { title: 'OS share sheet', sub: 'Pick an app, or close it' },
+  { title: 'Back on Meesho', sub: 'Congratulations · Open Meesho Creator Club' }
+];
+var FF_CONFETTI = (function () {
+  var cols = ['#F48FB1', '#F4B619', '#91E5BD', '#ADC6FF', '#D9A6D0', '#FFB74D', '#80DEEA'], out = [];
+  for (var i = 0; i < 26; i++) {
+    var x = (i * 37 + 11) % 100, y = (i * 53) % 230, r = (i * 61) % 180 - 90;
+    out.push('position: absolute; left: ' + x + '%; top: ' + y + 'px; width: ' + (3 + (i % 3) * 2) + 'px; height: ' + (8 + (i % 4) * 5) + 'px; border-radius: 2px; background: ' + cols[i % cols.length] + '; --r: ' + r + 'deg; animation: drift .7s ' + (0.2 + (i % 6) * 0.05) + 's cubic-bezier(.2,.8,.2,1) both');
+  }
+  return out;
+})();
+class Component extends DCLogic {
+  st() { return Object.assign({ view: 'pdp', mode: 'A', copied: false, away: null, toast: null, tid: 0 }, this.state || {}); }
+  toastP(msg) { var id = this.st().tid + 1, self = this; setTimeout(function () { if (self.st().tid === id) self.setState({ toast: null }); }, 2000); return { toast: msg, tid: id }; }
+  leaveAndReturn(title) {
+    var self = this;
+    this._g = (this._g || 0) + 1; var g = this._g;
+    this.setState({ view: 'pdp', away: title, toast: null });
+    setTimeout(function () { if (self._g === g) self.setState({ away: null, view: 'unlocked' }); }, 1300);
+  }
+  renderVals() {
+    var s = this.st(), self = this, B = s.mode === 'B', v = s.view;
+    var ease = 'cubic-bezier(.2,.8,.2,1)', dur = '.55s';
+    var mv = function (props) { return 'transition: ' + props.map(function (p) { return p + ' ' + dur + ' ' + ease; }).join(', ') + '; '; };
+    var fadeT = function (d) { return 'transition: opacity .22s ease ' + (d || '0s') + ', transform .3s ease ' + (d || '0s') + '; '; };
+    var order = B ? FF_B : FF_A;
+    var stepIndex = v === 'pdp' ? 0 : v === 'share' ? 1 : v === 'created3' ? 2 : v === 'os' ? 3 : 4;
+    var goStep = function (i) {
+      self._g = (self._g || 0) + 1;
+      if (i === 0) self.setState({ view: 'pdp', mode: 'A', away: null });
+      else if (i === 1) self.setState({ view: 'share', mode: 'A', away: null });
+      else if (i === 2) self.setState({ view: 'created3', mode: 'A', away: null });
+      else if (i === 3) self.setState({ view: 'os', mode: 'B', away: null });
+      else self.setState({ view: 'unlocked', away: null });
+    };
+    var OS_APPS = [
+      { name: 'WhatsApp', src: 'assets/whatsapp.svg' },
+      { name: 'Instagram', src: 'assets/instagram.svg' },
+      { name: 'Instagram Stories', src: 'assets/instagram.svg' },
+      { name: 'Facebook Wall', src: 'assets/facebook.svg' }
+    ];
+    var OS_ROWS = [
+      { name: 'New Quick Note', glyph: '✎' }, { name: 'Save to Files', glyph: '▭' },
+      { name: 'Find products on Amazon', glyph: '⌣' }, { name: 'Search on Google', glyph: 'G' }
+    ];
+    return {
+      steps: FF_STEPS.map(function (x, i) {
+        var on = i === stepIndex;
+        return {
+          num: String(i + 1), title: x.title, sub: x.sub, current: on ? 'step' : 'false',
+          style: 'display: flex; align-items: flex-start; gap: 10px; width: 100%; min-height: 50px; padding: 8px 10px; border-radius: 10px; text-align: left; border: 1px solid ' + (on ? '#9F2089' : '#CECEDE') + '; background: ' + (on ? '#FFE7FB' : '#FFFFFF') + '; color: #353543',
+          badge: 'width: 24px; height: 24px; flex-shrink: 0; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; background: ' + (on ? '#9F2089' : '#EAEAF2') + '; color: ' + (on ? '#FFFFFF' : '#353543'),
+          go: function () { goStep(i); }
+        };
+      }),
+      reset: function () { goStep(0); },
+      clock: v === 'os' ? '12:16' : '12:09',
+
+      showScrim: v !== 'pdp' || !!s.away,
+      scrimTap: function () { var cur = self.st().view; if (cur === 'os') self.leaveAndReturn('Share sheet closed'); else self.setState({ view: 'pdp', mode: 'A' }); },
+      isShare: v === 'share', isOs: v === 'os', isUnlocked: v === 'unlocked', isAway: !!s.away, awayTitle: s.away,
+      openShare: function () { self.setState({ view: 'share', mode: 'A', copied: false }); },
+      closeAll: function () { self.setState({ view: 'pdp', mode: 'A' }); },
+      other: function () { self.setState(self.toastP('Not part of this flow')); },
+      noop: function () {},
+
+      isA: !B, isB: B,
+      hdrStyle: 'position: absolute; left: 0; right: 0; top: 0; height: 56px; background: #FFFFFF; z-index: 3',
+      hdrTitle: 'flex: 1; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 16px; opacity: 0',
+      hdrDiv: 'position: absolute; left: 0; right: 0; top: 55px; height: 1px; background: #CECEDE',
+      sheetStyle: 'position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 8px 8px 0 0; overflow: hidden; z-index: 4; ' + mv(['height']) + 'height: 573px',
+      confetti: FF_CONFETTI,
+      resellerHidden: B ? 'true' : 'false',
+      resellerStyle: 'position: absolute; left: 16px; right: 16px; top: 67px; height: 26px; display: flex; align-items: center; gap: 4px; z-index: 2; ' + fadeT() + 'opacity: ' + (B ? 0 : 1) + '; transform: translateY(' + (B ? -8 : 0) + 'px); pointer-events: ' + (B ? 'none' : 'auto'),
+      divReseller: 'position: absolute; left: 0; right: 0; top: 103px; height: 1px; background: #CECEDE; z-index: 2; ' + fadeT() + 'opacity: ' + (B ? 0 : 1),
+      backHidden: B ? 'false' : 'true',
+      backStyle: 'position: absolute; left: 16px; top: 68px; z-index: 3; display: flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 16px; border: 1px solid #EAEAF2; background: #FFFFFF; color: #616173; font-size: 13px; line-height: 16px; letter-spacing: 0.0325px; ' + fadeT(B ? '.25s' : '0s') + 'opacity: ' + (B ? 1 : 0) + '; transform: translateY(' + (B ? 0 : 6) + 'px); pointer-events: ' + (B ? 'auto' : 'none'),
+      cardStyle: 'position: absolute; left: 0; top: 104px; width: 360px; height: 179px; z-index: 2; overflow: hidden',
+      cardBgA: 'position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(-4.503deg, #FFFFFF 1.2123%, #FEEDF8 93.771%); opacity: 1',
+      cardBgB: 'display: none',
+      cardAHidden: B ? 'true' : 'false', cardBHidden: B ? 'false' : 'true',
+      cardA: 'position: absolute; left: 0; top: 0; width: 360px; height: 179px; transition: opacity .22s ease, transform .3s ease; transform: translateY(' + (B ? -10 : 0) + 'px); opacity: ' + (B ? 0 : 1) + '; pointer-events: ' + (B ? 'none' : 'auto'),
+      cardB: 'position: absolute; left: 17px; top: 19px; width: 328px; box-sizing: border-box; padding: 24px 16px; border-radius: 12px; background: linear-gradient(180deg, #FEEDF7 0%, #FFFFFF 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; transition: opacity .3s ease ' + (B ? '.18s' : '0s') + ', transform .4s cubic-bezier(.2,.8,.2,1) ' + (B ? '.18s' : '0s') + '; transform: scale(' + (B ? 1 : 0.96) + ') translateY(' + (B ? 0 : 8) + 'px); opacity: ' + (B ? 1 : 0) + '; pointer-events: ' + (B ? 'auto' : 'none'),
+      linkText: s.copied ? 'Link copied' : 'www.meedwedwede/proawdwdut..',
+      copyLink: function () { self._c = (self._c || 0) + 1; var c = self._c; setTimeout(function () { if (self._c === c) self.setState({ copied: false }); }, 1800); self.setState(Object.assign({ copied: true }, self.toastP('Commission link copied'))); },
+      shareOnStyle: 'position: absolute; left: 0; right: 0; height: 234px; z-index: 2; ' + mv(['top']) + 'top: 283px',
+      titleA: 'position: absolute; left: 16px; top: 16px; font-size: 13px; line-height: 16px; font-weight: 600; transition: opacity .22s ease; opacity: ' + (B ? 0 : 1),
+      titleB: 'position: absolute; left: 16px; top: 16px; font-size: 13px; line-height: 16px; font-weight: 600; transition: opacity .22s ease .15s; opacity: ' + (B ? 1 : 0),
+      items: FF_ITEMS.map(function (it) {
+        var idx = order.indexOf(it.id), col = idx % 4, row = Math.floor(idx / 4);
+        return {
+          label: it.label, icon: FF_ICONS[it.icon],
+          aria: it.id === 'copy' ? (B ? 'Copy commission link' : 'Copy product link') : 'Share ' + (B ? 'commission' : 'product') + ' link on ' + it.label,
+          style: 'position: absolute; width: 73px; border: none; background: #FFFFFF; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; ' + mv(['left', 'top']) + 'left: ' + (16 + col * 85) + 'px; top: ' + (48 + row * 101) + 'px',
+          labelStyle: 'font-size: 13px; line-height: 16px; text-align: center; letter-spacing: 0.0325px; color: ' + it.color,
+          go: function () {
+            var b = self.st().mode === 'B';
+            if (it.id === 'copy') self.setState(self.toastP((b ? 'Commission' : 'Product') + ' link copied'));
+            else if (it.id === 'more') { if (b) self.setState({ view: 'os' }); else self.setState(self.toastP('Opens the phone’s share sheet with the product link')); }
+            else if (b) self.leaveAndReturn('Opening ' + it.label + '…');
+            else self.setState(self.toastP('Opens ' + it.label + ' with the product link'));
+          }
+        };
+      }),
+      divDownloadTop: 'position: absolute; left: 0; right: 0; height: 1px; background: #CECEDE; z-index: 2; ' + mv(['top']) + 'top: 517px',
+      downloadStyle: 'position: absolute; left: 16px; right: 16px; height: 24px; z-index: 2; border: none; background: #FFFFFF; padding: 0; display: flex; align-items: center; gap: 12px; text-align: left; color: #353543; ' + mv(['top']) + 'top: 533px',
+      divDownloadBottom: 'display: none; position: absolute; left: 0; right: 0; top: 405px; height: 1px; background: #CECEDE; z-index: 2; ' + fadeT() + 'opacity: ' + (B ? 0 : 1),
+      download: function () { self.setState(self.toastP('Photos saved to your gallery')); },
+      getLink: function () { self.setState({ view: 'created3', mode: 'A', copied: false }); },
+      isCreated3: v === 'created3',
+      backToShare: function () { self.setState({ view: 'share', mode: 'A', copied: false }); },
+      shareComm3: function () { self.setState({ view: 'os' }); },
+      linkText3: s.copied ? 'Link copied' : 'www.meedwedwede/produt..',
+      copyLabel3: s.copied ? 'COPIED' : 'COPY',
+      goBack: function () { self.setState({ mode: 'A', copied: false }); },
+
+      osApps: OS_APPS.map(function (a) {
+        return { name: a.name, glyph: a.glyph, src: a.src,
+          icon: 'width: 58px; height: 58px; border-radius: 14px; background: ' + a.bg + '; color: ' + a.fg + '; font-size: 26px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px rgba(0,0,0,0.06)',
+          go: function () { self.leaveAndReturn('Opening ' + a.name + '…'); } };
+      }),
+      osRows: OS_ROWS.map(function (r) { return { name: r.name, glyph: r.glyph, go: function () { self.leaveAndReturn(r.name + '…'); } }; }),
+      osCopy: function () { self.leaveAndReturn('Commission link copied'); },
+      osClose: function () { self.leaveAndReturn('Share sheet closed'); },
+
+      tryNow: function () { self.setState(self.toastP('Opens Meesho Creator Club')); },
+      hasToast: !!s.toast, toast: s.toast
+    };
+  }
+}
+</script>
+<script>
+mountPrototype('tpl', 'logic', 'app');
+(function () {
+  var fit = document.getElementById('fit');
+  function scale() {
+    var s = Math.min(1, window.innerWidth / 820, window.innerHeight / 840);
+    fit.style.transform = 'scale(' + s + ')';
+    fit.style.height = (840 * s) + 'px';
+  }
+  window.addEventListener('resize', scale); scale();
+})();
+</script>
+</body>
+</html>
